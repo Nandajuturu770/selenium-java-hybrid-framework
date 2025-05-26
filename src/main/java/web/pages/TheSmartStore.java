@@ -1,6 +1,8 @@
 package web.pages;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,7 +11,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import web.enums.BookDetails;
 import web.generic.WebElementActions;
+import web.utils.StringUtils;
 
 public class TheSmartStore extends WebElementActions {
 
@@ -69,7 +73,7 @@ public class TheSmartStore extends WebElementActions {
     @FindBy(xpath = "(//*[@class='whiteHeartIcon'])[1]/img[@alt='Red Heart Icon']")
     private WebElement wishlistedBtn;
 
-    @FindBy(xpath = "(//*[@class='whiteHeartIcon'])[1]/img[@alt=\"Red Heart Icon\"]")
+    @FindBy(xpath = "(//*[@class='whiteHeartIcon'])[1]/img[@alt= 'White Heart Icon']")
     private WebElement notWishlistedBtn;
 
     @FindBy(className = "smartStoreCard-description")
@@ -117,6 +121,9 @@ public class TheSmartStore extends WebElementActions {
     @FindBy(className = "cart-Item-basic-label")
     private WebElement basicTxt;
 
+    @FindBy(xpath = "//*[@class='smartStoreCard-price']/child::span")
+    private WebElement bookPriceTxt;
+
     @FindBy(xpath = "(//*[@class='smartStore-footerBlock'])[1]/child::button")
     private WebElement checkFirstBookBtn;
 
@@ -163,7 +170,7 @@ public class TheSmartStore extends WebElementActions {
     @FindBy(xpath = "//*[@class = 'buying-option-header flex gap-2']/ancestor::div[@id]/../descendant::div[@class='icon-main']")
     private WebElement moreBuyingPremiumResourceSec;
 
-	@FindBy(xpath = "//*[@class = 'buying-option-header']/preceding-sibling::div")
+    @FindBy(xpath = "//*[@class = 'buying-option-header']/preceding-sibling::div")
     private WebElement moreBuyingBasicCkbx;
 
     @FindBy(xpath = "//*[@class = 'buying-option-header']")
@@ -184,7 +191,7 @@ public class TheSmartStore extends WebElementActions {
     @FindBy(xpath = "//*[@class='moreBuying-btnBlock']/button")
     private WebElement moreBuyingAddToCartBtn;
 
-	//* Upgrade Popup
+    //* Upgrade Popup
     @FindBy(xpath = "//*[contains(text(),'Resource')]")
     private WebElement upgradePopupTitleTxt;
 
@@ -197,7 +204,7 @@ public class TheSmartStore extends WebElementActions {
     @FindBy(xpath = "//*[contains(text(),'your learning with Premium DigiBook')]")
     private WebElement upgradePopupDescTxt;
 
-    @FindBy(className = "text-[#00AAD3] font-bold")
+    @FindBy(xpath = "//*[@class = 'text-[#00AAD3] font-bold']")
     private WebElement upgradePopupAmountTxt;
 
     @FindBy(xpath = "//*[contains(text(),'with the expiry of this DigiBook')]")
@@ -206,7 +213,7 @@ public class TheSmartStore extends WebElementActions {
     @FindBy(xpath = "//*[text()='Upgrade to Premium DigiBook']")
     private WebElement upgradeToPremiumBtn;
 
-	//* Getter Methods */
+    //* Getter Methods */
     public WebElement getHomeLnk() {
         return homeLnk;
     }
@@ -331,6 +338,10 @@ public class TheSmartStore extends WebElementActions {
         return basicTxt;
     }
 
+    public WebElement getBookPriceTxt() {
+        return bookPriceTxt;
+    }
+
     public WebElement getCheckFirstBookBtn() {
         return checkFirstBookBtn;
     }
@@ -447,4 +458,141 @@ public class TheSmartStore extends WebElementActions {
         return upgradeToPremiumBtn;
     }
 
+    /**
+     * @description this method is used used to verify the header of TSS.
+     * @return booksCount <code>int</code>
+     */
+    public int verifyHeaderOfTSS() {
+        logger.info("verification of header of smart store view is started...");
+        elementIsDisplayed(getHomeLnk(), "HomeLnk");
+        elementIsDisplayed(getTheSmartStoreTitleTxt(), "TheSmartStoreTitleTxt");
+        elementIsDisplayed(getBooksCountTxt(), "BookCountTxt");
+        String bookCount = getTextFromElement(getBooksCountTxt(), "BookCountTxt");
+        elementIsDisplayed(getSearchTxtfd(), "SearchTxtfd");
+        List<WebElement> filters = getGradeAndSubjectFiltersImg();
+        for (WebElement element : filters) {
+            elementIsDisplayed(element, "filter");
+        }
+        logger.info("verification of header of smart store view is successfully completed.\n");
+        return StringUtils.getNumberFromString(bookCount);
+    }
+
+    /**
+     * @description this method is used to verify the no data found page.
+     */
+    public void verifyNoDataFoundPage() {
+        logger.info("verification of no data found page is started...");
+        elementIsDisplayed(getNoDataFoundImg(), "NoDataFoundImg");
+        elementIsDisplayed(getNoBooksFoundTxt(), "NoBooksFoundTxt");
+        elementIsDisplayed(getWeCouldNotFoundTxt(), "WeCouldNotFoundTxt");
+        logger.info("verification of no data found page is completed successfully.\n");
+    }
+
+    /**
+     * @description this method is used to verify book in the smart store and
+     * get book details.
+     * @param wishOrCart <code>String</code>
+     * @return bookDetails <code>Map</code>
+     * @keys BookName <code>String</code> BookPrice <code>String</code>
+     * BookDescription <code>String</code> BookSubject <code>String</code>
+     * BookGrade <code>String</code> BookEdition <code>String</code>
+     */
+    public Map<String, String> verifyBookDetailsOfTSS(String wishOrCart) {
+        logger.info("verification of book details of smart store is started...");
+        // to store the data of the book
+        Map<String, String> bookDetails = new HashMap<>();
+        elementIsDisplayed(getBookNameTxt(), "BookNameTxt");
+        String bookName = getTextFromElement(getBookNameTxt(), "BookNameTxt");
+        bookDetails.put(BookDetails.BOOK_NAME.getBookDataValue(), bookName);
+        if (checkIfElementIsDisplayed(getNotWishlistedBtn(), "notWishlistedBtn")) {
+            click(getNotWishlistedBtn(), "NotWishlistedBtn");
+            waitTillElementIsDisplayedWithinTime(getWishlistedBtn(), "WishlistedBtn", 3);
+            click(getWishlistedBtn(), "WishlistedBtn");
+        } else {
+            elementIsDisplayed(getWishlistedBtn(), "WishlistedBtn");
+            click(getWishlistedBtn(), "WishlistedBtn");
+            waitTillElementIsDisplayedWithinTime(getNotWishlistedBtn(), "NotWishlistedBtm", 3);
+        }
+        elementIsDisplayed(getBookDescTxt(), "BookDescTxt");
+        String bookDesc = getTextFromElement(getBookDescTxt(), "BookDescTxt");
+        bookDetails.put(BookDetails.BOOK_DESC.getBookDataValue(), bookDesc);
+        elementIsDisplayed(getBookRatingSec(), "BookRatingSec");
+        elementIsDisplayed(getBookAverageRateTxt(), "BookAverageRatingTxt");
+        elementIsDisplayed(getBookRationCountTxt(), "BookRationCountTxt");
+        elementIsDisplayed(getBookGradeTxt(), "BookGradeTxt");
+        elementIsDisplayed(getBookGradeValueTxt(), "BookGradeValueTxt");
+        String bookGrade = getTextFromElement(getBookGradeValueTxt(), "BookGradeValueTxt");
+        bookDetails.put(BookDetails.BOOK_DESC.getBookDataValue(), bookGrade);
+        elementIsDisplayed(getBookSubjectTxt(), "BookSubjectTxt");
+        elementIsDisplayed(getBookSubjectValueTxt(), "BookSubjectValueTxt");
+        String bookSubject = getTextFromElement(getBookSubjectValueTxt(), "BookSubjectValueTxt");
+        bookDetails.put(BookDetails.BOOK_SUBJECT.getBookDataValue(), bookSubject);
+        // to verify more buying options
+        if (checkIfElementIsDisplayed(getCheckIfMoreBuyingOptionsBtn(), "CheckIfMoreBuyingOptionsBtn")) {
+            elementIsDisplayed(getMoreBuyingOptionsBtn(), "MoreBuyingOptionsBtn");
+        }
+        // to check book edition
+        boolean bookEdition = checkIfElementIsDisplayed(getCheckPremiumLabel(), "CheckPremiumLabel");
+        elementIsDisplayed(getBookPriceTxt(), "BookPriceTxt");
+        String bookPriceStr = getTextFromElement(getBookPriceTxt(), "BookPriceTxt");
+        String bookPriceInt = StringUtils.getNumberFromString(bookPriceStr) + "";
+        if (bookEdition) {
+            elementIsDisplayed(getPremiumIconImg(), "PremiumIconImg");
+            elementIsDisplayed(getPremiumTxt(), "PremiumTxt");
+            bookDetails.put(BookDetails.PREMIUM_EDITION.getBookDataValue(), "true");
+            bookDetails.put(BookDetails.BOOK_PREMIUM_PRICE.getBookDataValue(), bookPriceInt);
+        } else {
+            elementIsDisplayed(getCheckBasicLabel(), "CheckBasicLabel");
+            elementIsDisplayed(getBasicTxt(), "BasicTxt");
+            bookDetails.put(BookDetails.BASIC_EDITION.getBookDataValue(), "true");
+            bookDetails.put(BookDetails.BOOK_BASIC_PRICE.getBookDataValue(), bookPriceInt);
+        }
+        if (BookDetails.BOOK_WISHLISTED.getBookDataValue().equals(wishOrCart)) {
+            click(getNotWishlistedBtn(), "NotWishlistedBtn");
+            bookDetails.put(BookDetails.BOOK_WISHLISTED.getBookDataValue(), "true");
+        } else if (BookDetails.BOOK_CARTED.getBookDataValue().equals(wishOrCart)) {
+            elementIsDisplayed(getCheckFirstBookBtn(), "CheckFirstBookBtn");
+            String buttonType = getTextFromElement(getCheckFirstBookBtn(), "CheckFirstBookBtn");
+            if (buttonType.contains("Add to")) {
+                waitTillElementClickable(getAddToCartBtn(), "AddToCartBtn");
+                click(getAddToCartBtn(), "AddToCartBtn");
+                waitTillElementIsDisplayedWithinTime(getGoToCartBtn(), "GoToCart", 3);
+                elementIsDisplayed(getGoToCartBtn(), "GoToCartBtn");
+            } else if (buttonType.contains("Go to")) {
+                elementIsDisplayed(getGoToCartBtn(), "GoToCartBtn");
+            } else {
+                elementIsDisplayed(getUpgradeBtn(), "UpgradeBtn");
+            }
+            bookDetails.put(BookDetails.BOOK_CARTED.getBookDataValue(), "true");
+        } else {
+            logger.info("book is not added into wishlist or cart.");
+        }
+        logger.info("verification of book details of smart store is completed successfully.\n");
+        return bookDetails;
+    }
+
+   /**
+    * @description this method used to verify upgrade popup and get price of upgrade of books.
+    * @param cartOrDelete <code>String</cod>
+    * @return upgradeAmount <code>int</code>
+    */
+    public int verifyUpgradePopup(String cartOrDelete) {
+        click(getUpgradeBtn(), "UpgradeBtn");
+        logger.info("verification of upgrade popup started...");
+        elementIsDisplayed(getUpgradePopupTitleTxt(), "UpgradePopupTitleTxt");
+        elementIsDisplayed(getUpgradePopupCloseBtn(), "UpgradePopupCloseBtn");
+        elementIsDisplayed(getUpgradePopupImg(), "UpgradePopupImg");
+        elementIsDisplayed(getUpgradePopupDescTxt(), "UpgradePopupDescTxt");
+        elementIsDisplayed(getUpgradePopupAmountTxt(), "UpgradePopupAmountTxt");
+        String upgradePriceStr = getTextFromElement(getUpgradePopupAmountTxt(), "UpgradePopupAmountTxt");
+        elementIsDisplayed(getUpgradeExpireTxt(), "UpgradeExpireTxt");
+        elementIsDisplayed(getUpgradeToPremiumBtn(), "UpgradeToPremiumBtn");
+        if (BookDetails.BOOK_CARTED.getBookDataValue().equals(cartOrDelete)) {
+            click(getUpgradeToPremiumBtn(), "UpgradeToPremiumBtn");
+        } else {
+            click(getUpgradePopupCloseBtn(), "UpgradePopupCloseBtn");
+        }
+        logger.info("verification of upgrade popup is completed successfully.\n");
+        return StringUtils.getNumberFromString(upgradePriceStr);
+    }
 }

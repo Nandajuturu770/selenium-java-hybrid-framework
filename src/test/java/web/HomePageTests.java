@@ -4,7 +4,7 @@ import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import web.enums.ProfileFields;
@@ -19,7 +19,7 @@ public class HomePageTests extends BaseTest {
 
 	final static Logger logger = LogManager.getLogger(HomePage.class);
 
-	String mobileNumber = "8147740413";
+	String mobileNumber = "7702425817";
 	String password = "111111";
 	LoginPage loginPage;
 	HomePage homePage;
@@ -27,7 +27,7 @@ public class HomePageTests extends BaseTest {
 	WishlistPage wishlistPage;
 	CartPage cartPage;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeClass(alwaysRun=true)
 	public void initialization() {
 		loginPage = new LoginPage(driver);
 		homePage = new HomePage(driver);
@@ -37,7 +37,7 @@ public class HomePageTests extends BaseTest {
 		loginPage.loginIntoApplication(mobileNumber, password);
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = true , priority=1)
 	public void verifyHomePage() {
 		logger.info("verification of all features of home page is started...");
 		homePage.verifyHeaderOfHome();
@@ -50,7 +50,7 @@ public class HomePageTests extends BaseTest {
 		logger.info("verification of all features of home page is completed successfully.");
 	}
 
-	@Test(enabled = true)
+	@Test(enabled = true , priority=2)
 	public void verifyProfileFeature() {
 		logger.info("verification of profile feature is started...");
 		homePage.openHomeFeaturesByName(ProfileFields.PROFILE.getProfileFieldName());
@@ -64,7 +64,7 @@ public class HomePageTests extends BaseTest {
 	}
 
 
-	@Test(enabled = true)
+	@Test(enabled = true, priority=3)
 	public void verifyWishlist() throws InterruptedException {
 		logger.info("verification of wish list is started...");
 		homePage.openHomeFeaturesByName(ProfileFields.MY_WISHLIST.getProfileFieldName());
@@ -75,7 +75,7 @@ public class HomePageTests extends BaseTest {
 		logger.info("verification of wish list is completed successfully.");
 	}
 
-	@Test(enabled=true)
+	@Test(enabled=true,priority=4)
 	public void verifyCart(){
 		logger.info("verification of cart is started...");
 		homePage.openHomeFeaturesByName(ProfileFields.MY_CART.getProfileFieldName());

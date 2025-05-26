@@ -9,7 +9,8 @@ public enum ProfileFields {
     //* Home Page Features
     HOME("home"),LOGOUT("Logout"), PROFILE("Profile"),REDEEM_ACCESS_CODE("RedeemAccessCode"),
     MY_BOOKS("MyBooks"),MY_ORDERS("MyOrders"),MY_WISHLIST("MyWishlist"), MY_CART("MyCart"), MY_WALLET("myWallet"),
-    CONTACT_US("ContactUs"), NOTIFICATION_SETTINGS("NotificationSettings"), CHANGE_LANGUAGE("ChangeLanguage"),DELETE("delete");
+    CONTACT_US("ContactUs"), NOTIFICATION_SETTINGS("NotificationSettings"), CHANGE_LANGUAGE("ChangeLanguage"),DELETE("delete")
+    ,THE_SMART_STORE("TheSmartStore");
 
     private String profileFieldName;
 

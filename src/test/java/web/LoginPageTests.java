@@ -1,7 +1,7 @@
 package web;
 
 
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import web.generic.BaseTest;
@@ -13,7 +13,7 @@ public class LoginPageTests extends BaseTest {
 	String password = "111111";
 	LoginPage loginPage;
 
-	@BeforeMethod(alwaysRun = true)
+	@BeforeClass(alwaysRun = true)
 	public void initialization() {
 		 loginPage = new LoginPage(driver);
 	}

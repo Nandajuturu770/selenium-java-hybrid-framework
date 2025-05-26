@@ -15,7 +15,7 @@ public class BaseTest {
 	final static Logger logger = LogManager.getLogger(BaseTest.class);
 
 	public static ChromeOptions options;
-	public static String URL = "https://reader.smartdigibook.com/";
+	public static String URL = "https://uat-digibook-student.navneet.com/";
 	public static WebDriver driver;
 
 	@BeforeClass
@@ -28,14 +28,14 @@ public class BaseTest {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 		driver.manage().window().maximize();
-		logger.info("brower is maximized");
+		logger.info("browser is maximized");
 		driver.get(URL);
-		logger.info("brower is navigated "+URL);
+		logger.info("browser is navigated "+URL);
 	}
 
 	@AfterClass
-	public void tearDownBwoser(){
+	public void tearDownBrowser(){
 //		if(driver != null)
-//			driver.close();
+//			driver.quit();
 	}
 }

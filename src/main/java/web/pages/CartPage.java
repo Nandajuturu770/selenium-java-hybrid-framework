@@ -376,8 +376,8 @@ public class CartPage extends WebElementActions {
 			if (checkIfElementIsDisplayed(getEmptyImg(), "getEmptyImg")) {
 				break;
 			} else {
+				waitTillElementIsDisplayedWithinTime(getBookCoverImg(),"BookCoverImg", 3);
 				clickByActions(getBookDeleteBtn(), "BookDeleteBtn");
-				waitTillElementIsDisplayedWithinTime(getBookCoverImg(),"BookCoverImg", 5);
 			}
 		} while (true);
 		verifyEmptyCart();
