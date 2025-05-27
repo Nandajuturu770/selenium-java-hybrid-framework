@@ -12,30 +12,31 @@ import org.testng.annotations.BeforeClass;
 
 public class BaseTest {
 
-	final static Logger logger = LogManager.getLogger(BaseTest.class);
+    final static Logger logger = LogManager.getLogger(BaseTest.class);
 
-	public static ChromeOptions options;
-	public static String URL = "https://uat-digibook-student.navneet.com/";
-	public static WebDriver driver;
+    public static ChromeOptions options;
+    //public static String URL = "https://uat-digibook-student.navneet.com/";
+    public static String URL = "https://reader.smartdigibook.com/";
+    public static WebDriver driver;
 
-	@BeforeClass
-	public void setupBrowser(){
-		logger.info("system is trying to open browser...");
-		options = new ChromeOptions();
-		options.addArguments("--disable-infobars");
-		options.addArguments("--disable-notifications");
-		driver = new ChromeDriver(options);
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-		driver.manage().window().maximize();
-		logger.info("browser is maximized");
-		driver.get(URL);
-		logger.info("browser is navigated "+URL);
-	}
+    @BeforeClass
+    public void setupBrowser() {
+        logger.info("system is trying to open browser...");
+        options = new ChromeOptions();
+        options.addArguments("--disable-infobars");
+        options.addArguments("--disable-notifications");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        logger.info("browser is maximized");
+        driver.get(URL);
+        logger.info("browser is navigated " + URL);
+    }
 
-	@AfterClass
-	public void tearDownBrowser(){
-//		if(driver != null)
-//			driver.quit();
-	}
+    @AfterClass
+    public void tearDownBrowser() {
+		if(driver != null)
+			driver.quit();
+    }
 }

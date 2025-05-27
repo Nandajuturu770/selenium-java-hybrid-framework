@@ -30,7 +30,7 @@ public class BookDetailsPage extends WebElementActions {
     private WebElement thumbnailDownArrowBtn;
 
     @FindBy(className = "product-thumbnail-preview")
-    private WebElement thumnailPreviewImg;
+    private WebElement thumbnailPreviewImg;
 
     @FindBy(className = "bookName-title")
     private WebElement bookNameTxt;
@@ -104,10 +104,10 @@ public class BookDetailsPage extends WebElementActions {
     private WebElement digiBookFeatureNameTxt;
 
     @FindBy(xpath = "//*[@class='interactives-item-container']/child::img")
-    private WebElement digiBookFetaureLeftBtn;
+    private WebElement digiBookFeatureLeftBtn;
 
     @FindBy(xpath = "(//*[@class='interactives-item-container']/child::img)[last()]")
-    private WebElement digiBookFeatureRightbtn;
+    private WebElement digiBookFeatureRightBtn;
 
     @FindBy(className = "buying-container")
     private WebElement moreBuyingTitleTxt;
@@ -127,4 +127,227 @@ public class BookDetailsPage extends WebElementActions {
 
     @FindBy(className = "product-expired-label")
     private WebElement bookExpiredTxt;
+
+    @FindBy(xpath = "//*[@class='redeem-note']/descendant::img")
+    private WebElement redeemImg;
+
+    @FindBy(xpath = "//*[contains(text(),'Do you possess the')]")
+    private WebElement doYouPossessTxt;
+
+    @FindBy(xpath = "//*[contains(text(),'the provided code within')]")
+    private WebElement kindlyRequestTxt;
+    
+    @FindBy(xpath = "//*[@class='redeem-button']/button")
+    private WebElement redeemBtn;
+
+    //* You might also need
+    @FindBy(xpath = "sub-header-title")
+    private WebElement youMightAlsoTxt;
+
+    @FindBy(xpath = "//img[@class='horizontalScrollBar-img']")
+    private WebElement TssBookCoverImg;
+
+    @FindBy(xpath = "//*[@class='horizontalscroller-subTitle']")
+    private WebElement TssBookNameTxt;
+
+    @FindBy(xpath = "//*[@class='book-current-price']")
+    private WebElement TssBookPriceTxt;
+
+    @FindBy(xpath = "//*[@class='book-wishlist-icon']//*[@xmlns='http://www.w3.org/2000/svg']")
+    private WebElement TssBookHeartBtn;
+
+    @FindBy(xpath = "//*[@class='premium-label']/img")
+    private WebElement TssBookPremiumImg;
+
+    @FindBy(xpath = "//*[@class='book-add-to-cart-button']")
+    private WebElement addToCartOrGoToCartBtn;
+ 
+    /* Getter Methods */
+    public WebElement getThumbnailsImg() {
+        return thumbnailsImg;
+    }
+
+    public WebElement getThumbnailUpArrowBtn() {
+        return thumbnailUpArrowBtn;
+    }
+
+    public WebElement getThumbnailDownArrowBtn() {
+        return thumbnailDownArrowBtn;
+    }
+
+    public WebElement getThumbnailPreviewImg() {
+        return thumbnailPreviewImg;
+    }
+
+    public WebElement getBookNameTxt() {
+        return bookNameTxt;
+    }
+
+    public WebElement getShareBtn() {
+        return shareBtn;
+    }
+
+    public WebElement getWhatsappImg() {
+        return whatsappImg;
+    }
+
+    public WebElement getWhatsappTxt() {
+        return whatsappTxt;
+    }
+
+    public WebElement getFacebookImg() {
+        return facebookImg;
+    }
+
+    public WebElement getFacebookTxt() {
+        return facebookTxt;
+    }
+
+    public WebElement getTwitterImg() {
+        return twitterImg;
+    }
+
+    public WebElement getTwitterTxt() {
+        return twitterTxt;
+    }
+
+    public WebElement getInstagramImg() {
+        return instagramImg;
+    }
+
+    public WebElement getInstagramTxt() {
+        return instagramTxt;
+    }
+
+    public WebElement getCopyLinkImg() {
+        return copyLinkImg;
+    }
+
+    public WebElement getCopyLinkTxt() {
+        return copyLinkTxt;
+    }
+
+    public WebElement getRatingImg() {
+        return ratingImg;
+    }
+
+    public WebElement getNoOfRatingsTxt() {
+        return noOfRatingsTxt;
+    }
+
+    public WebElement getGradeTxt() {
+        return gradeTxt;
+    }
+
+    public WebElement getGradeValueTxt() {
+        return gradeValueTxt;
+    }
+
+    public WebElement getSubjectTxt() {
+        return subjectTxt;
+    }
+
+    public WebElement getSubjectValueTxt() {
+        return subjectValueTxt;
+    }
+
+    public WebElement getBookDescriptionTxt() {
+        return bookDescriptionTxt;
+    }
+
+    public WebElement getReadMoreBtn() {
+        return readMoreBtn;
+    }
+
+    public WebElement getReadLessBtn() {
+        return readLessBtn;
+    }
+
+    public WebElement getDigiBookFeaturesTitleTxt() {
+        return digiBookFeaturesTitleTxt;
+    }
+
+    public List<WebElement> getDigiBookFeaturesImg() {
+        return digiBookFeaturesImg;
+    }
+
+    public WebElement getDigiBookFeatureNameTxt() {
+        return digiBookFeatureNameTxt;
+    }
+
+    public WebElement getDigiBookFeatureLeftBtn() {
+        return digiBookFeatureLeftBtn;
+    }
+
+    public WebElement getDigiBookFeatureRightBtn() {
+        return digiBookFeatureRightBtn;
+    }
+
+    public WebElement getMoreBuyingTitleTxt() {
+        return moreBuyingTitleTxt;
+    }
+
+    public WebElement getAddToCartBtn() {
+        return addToCartBtn;
+    }
+
+    public WebElement getGoToCartBtn() {
+        return goToCartBtn;
+    }
+
+    public WebElement getAddToWishlistBtn() {
+        return addToWishlistBtn;
+    }
+
+    public WebElement getWishlistedBtn() {
+        return wishlistedBtn;
+    }
+
+    public WebElement getBookExpiredTxt() {
+        return bookExpiredTxt;
+    }
+
+    public WebElement getRedeemImg() {
+        return redeemImg;
+    }
+
+    public WebElement getDoYouPossessTxt() {
+        return doYouPossessTxt;
+    }
+
+    public WebElement getKindlyRequestTxt() {
+        return kindlyRequestTxt;
+    }
+
+    public WebElement getRedeemBtn() {
+        return redeemBtn;
+    }
+
+    public WebElement getYouMightAlsoTxt() {
+        return youMightAlsoTxt;
+    }
+
+    public WebElement getTssBookCoverImg() {
+        return TssBookCoverImg;
+    }
+
+    public WebElement getTssBookNameTxt() {
+        return TssBookNameTxt;
+    }
+
+    public WebElement getTssBookPriceTxt() {
+        return TssBookPriceTxt;
+    }
+
+    public WebElement getTssBookHeartBtn() {
+        return TssBookHeartBtn;
+    }
+
+    public WebElement getTssBookPremiumImg() {
+        return TssBookPremiumImg;
+    }
+
+    public WebElement getAddToCartOrGoToCartBtn() {
+        return addToCartOrGoToCartBtn;
+    }
 }

@@ -641,7 +641,7 @@ public class HomePage extends WebElementActions {
         if (ProfileFields.HOME.getProfileFieldName().equals(featureName)) {
             click(getHeaderSmartDigiBookLogo(), "HeaderSmartDigiBookLogo"); 
         }else if (ProfileFields.REDEEM_ACCESS_CODE.getProfileFieldName().equals(featureName)) {
-            click(getHeaderRedeemAccessBtn(), "HeaderRedeemAccessBtn"); 
+            clickByJavaScript(getHeaderRedeemAccessBtn(), "HeaderRedeemAccessBtn"); 
         }else if (ProfileFields.CONTACT_US.getProfileFieldName().equals(featureName)) {
             click(getContactUsBtn(), "ContactUsBtn"); 
         }else if (ProfileFields.NOTIFICATION_SETTINGS.getProfileFieldName().equals(featureName)) {
