@@ -13,7 +13,7 @@ public class BrowserActions  {
 	final static Logger logger = LogManager.getLogger(BrowserActions.class);
 
 	protected static WebDriver driver = BaseTest.driver;
-	
+
 	/**
 	 * @description this method is used to maximize the browser.
 	 */
@@ -25,7 +25,7 @@ public class BrowserActions  {
 			Assert.fail("failed to maximize the browser :: please check below details \n"+exception.getMessage());
 		}
 	}
-	
+
 	/**
 	 * @description this method is used to minimize the browser.
 	 */
@@ -37,7 +37,7 @@ public class BrowserActions  {
 			Assert.fail("failed to minimize the screnn browser :: please check below details \n"+exception.getMessage());
 		}
 	}
-	
+
 	/**
 	 * @description this method is used to refresh the page.
 	 */
@@ -95,7 +95,7 @@ public class BrowserActions  {
 	 */
 	public static String getCurrentUrl() {
 		try {
-		
+
 			String currentUrl = driver.getCurrentUrl();
 			logger.info("browser current url is :: "+currentUrl);
 			return currentUrl;
@@ -104,7 +104,7 @@ public class BrowserActions  {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * @description this method is used to get parent window handle.
 	 * @return parentWindowId <code>String</code>
@@ -119,7 +119,7 @@ public class BrowserActions  {
 		}
 		return null;
 	}
-	
+
 	/**
 	 * @description this method is used to get all window handles.
 	 * @return allWindowIds <code>Set<String></code>
@@ -132,9 +132,9 @@ public class BrowserActions  {
 		}
 		return null;	
 	}
-	
+
 	/**
-	 * @description this method is used to scroll the page to the buttom.
+	 * @description this method is used to scroll the page to the bottom.
 	 */
 	public static void scrollButtonOfPage() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;

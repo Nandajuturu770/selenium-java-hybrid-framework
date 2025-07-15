@@ -25,7 +25,7 @@ public class WebElementActions extends BrowserActions {
 	 * @description this method is used to verify the element is displayed or
 	 * not.
 	 * @param element <code>WebElement</code>
-	 * @return <code>boolean</code>
+	 * @return result <code>boolean</code>
 	 */
 	public static boolean elementIsDisplayed(WebElement element, String elementName) {
 		boolean result = false;
@@ -41,7 +41,7 @@ public class WebElementActions extends BrowserActions {
 	/**
 	 * @description this method is used to check the element is displayed.
 	 * @param element <code>WebElement</code>
-	 * @return <code>boolean</code>
+	 * @return result <code>boolean</code>
 	 */
 	public static boolean checkIfElementIsDisplayed(WebElement element, String elementName) {
 		boolean status = false;
@@ -58,7 +58,7 @@ public class WebElementActions extends BrowserActions {
 	/**
 	 * @description this method is used to enter the value into the element.
 	 * @param element <code>WebElement</code>
-	 * @param value <code>String</code>
+	 * @param value   <code>String</code>
 	 */
 	public static void enterValue(WebElement element, String elementName, String value) {
 		try {
@@ -98,9 +98,9 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to verify check box is selected or not.
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
 	 * @param elementName <code>String</code>
-	 * @return status <code>boolean</code>
+	 * @return status     <code>boolean</code>
 	 */
 	public static boolean checkElementIsSelected(WebElement element, String elementName) {
 		try {
@@ -118,9 +118,9 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description <bold>this method is used to verify element is enabled or not</bold>
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
 	 * @param elementName <code>String</code>
-	 * @return <code>boolean</code> -> true if element is enabled otherwise false
+	 * @return result     <code>boolean</code> -> true if element is enabled otherwise false
 	 */
 	public static boolean checkElementIsEnabled(WebElement element , String elementName) {
 		try {
@@ -138,7 +138,8 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to click by using actions class.
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
 	 */
 	public static void clickByActions(WebElement element, String elementName) {
 		try {
@@ -152,7 +153,8 @@ public class WebElementActions extends BrowserActions {
 	/**
 	 * @description this method is used to move the cursor to the element and
 	 * double click on it.
-	 * @param element
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
 	 */
 	public static void moveCursorAndDoubleClick(WebElement element, String elementName) {
 		try {
@@ -166,7 +168,9 @@ public class WebElementActions extends BrowserActions {
 	/**
 	 * @description this method is used to move cursor to element and click by
 	 * using actions class.
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
+	 * 
 	 */
 	public static void moveCursorAndClick(WebElement element, String elementName) {
 		try {
@@ -180,7 +184,8 @@ public class WebElementActions extends BrowserActions {
 	/**
 	 * @description this method is used to double on element by using actions
 	 * class.
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
 	 */
 	public static void doubleClickByActions(WebElement element, String elementName) {
 		try {
@@ -194,7 +199,8 @@ public class WebElementActions extends BrowserActions {
 	/**
 	 * @description this method is used to scroll to element by using actions
 	 * class.
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
 	 */
 	public static void scrollToElementByActions(WebElement element, String elementName) {
 		try {
@@ -208,9 +214,9 @@ public class WebElementActions extends BrowserActions {
 	/**
 	 * @description this method is used to wait until the given time to find the
 	 * element
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
 	 * @param elementName <code>String</code>
-	 * @param sec <code>int</code>
+	 * @param seconds     <code>int</code>
 	 */
 	public static boolean waitTillElementIsDisplayedWithinTime(WebElement element, String elementName, int sec) {
 		boolean status = false;
@@ -235,7 +241,7 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to add cookie.
-	 * @param cookieName <code>String</code>
+	 * @param cookieName  <code>String</code>
 	 * @param cookieValue <code>String</code>
 	 */
 	public static void addCookies(String cookieName, String cookieStatus) {
@@ -247,8 +253,8 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to get text of element
-	 * @param element <code>WebElement</code>
-	 * @param elementName <code>String</code>
+	 * @param element        <code>WebElement</code>
+	 * @param elementName    <code>String</code>
 	 * @return textOfElement <code>String</code>
 	 */
 	public static String getTextFromElement(WebElement element , String elementName) {
@@ -264,7 +270,7 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to wait till element ready to click
-	 * @param element <code>WebElement</WebElement>
+	 * @param element     <code>WebElement</WebElement>
 	 * @param elementName <code>String</code>
 	 */
 	public static void waitTillElementClickable(WebElement element , String elementName) {
@@ -288,7 +294,7 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to click on element using the java script.
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
 	 * @param elementName <code>String</code>
 	 */
 	public static void clickByJavaScript(WebElement element, String elementName) {
@@ -303,9 +309,9 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to get attribute value of element
-	 * @param element <code>WebElement</code>
-	 * @param elementName <code>String</code>
-	 * @param attribute <code>String</code>
+	 * @param element         <code>WebElement</code>
+	 * @param elementName     <code>String</code>
+	 * @param attribute       <code>String</code>
 	 * @return attributeValue <code>String</code>
 	 */
 	public static String getAttributeValueOfElement(WebElement element , String elementName , String attribute) {
@@ -321,7 +327,7 @@ public class WebElementActions extends BrowserActions {
 	
 	/**
 	 * @discription this method is used to verify element is visible or not
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
 	 * @param elementName <code>String</code>
 	 */
 	public static void checkElementIsVisible(WebElement element, String elementName) {

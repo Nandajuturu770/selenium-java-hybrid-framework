@@ -96,5 +96,4 @@ public class HomePageTests extends BaseTest {
         redeemAccessCodePage.verifyWrongAccessCodePopup(true);
         logger.info("verification of redeem access code feature is completed successfully.");
     }
-
 }

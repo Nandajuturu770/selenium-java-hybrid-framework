@@ -26,5 +26,4 @@ public class LoginPageTests extends BaseTest {
 		loginPage.verifyHowToUse();
 		loginPage.loginIntoApplication(mobileNumber, password);
 	}
-	
 }

@@ -19,20 +19,20 @@ public class TheSmartStoreTests extends BaseTest{
 	String password = "777777";
 	LoginPage loginPage;
 	HomePage homePage;
-    TheSmartStore theSmartStore;
+	TheSmartStore theSmartStore;
 
-    @BeforeClass(alwaysRun=true)
+	@BeforeClass(alwaysRun=true)
 	public void initialization() {
 		loginPage = new LoginPage(driver);
 		homePage = new HomePage(driver);
-        theSmartStore = new TheSmartStore(driver);
+		theSmartStore = new TheSmartStore(driver);
 		loginPage.loginIntoApplication(mobileNumber, password);
 	}
 
 	@Test(enabled = true)
 	public void verifyBookDetailsOfTSS() {
-	homePage.openHomeFeaturesByName(ProfileFields.THE_SMART_STORE.getProfileFieldName());
-    theSmartStore.verifyHeaderOfTSS();
-	theSmartStore.verifyUpgradePopup(BookDetails.BOOK_CARTED.getBookDataValue());
+		homePage.openHomeFeaturesByName(ProfileFields.THE_SMART_STORE.getProfileFieldName());
+		theSmartStore.verifyHeaderOfTSS();
+		theSmartStore.verifyUpgradePopup(BookDetails.BOOK_CARTED.getBookDataValue());
 	}
 }

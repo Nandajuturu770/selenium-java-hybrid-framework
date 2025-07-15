@@ -1,6 +1,7 @@
 package web.enums;
 
 public enum BookDetails {
+	
 	//* book details
     BOOK_NAME("BookName"),PREMIUM_EDITION("Premium"),BASIC_EDITION("Basic"),
     BOOK_PREMIUM_PRICE("PremiumPrice"),BOOK_BASIC_PRICE("BasicPrice"),
