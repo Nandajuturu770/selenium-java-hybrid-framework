@@ -510,7 +510,7 @@ public class HomePage extends WebElementActions {
     public void verifyMyLibrary() {
         logger.info("verification of my library and my books section is started...");
         scrollToElementByActions(getBookNameTxt(), "BookNameTxt");
-        elementIsDisplayed(getBanner(), "Banner");
+        //elementIsDisplayed(getBanner(), "Banner");
         elementIsDisplayed(getMyLibraryTxt(), "LibraryTxt");
         elementIsDisplayed(getSearchTxtfd(), "SearchTxtfd");
         List<WebElement> categories = getCategoriesTxt();

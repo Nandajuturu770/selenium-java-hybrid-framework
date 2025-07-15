@@ -20,7 +20,7 @@ public class HomePageTests extends BaseTest {
 
     final static Logger logger = LogManager.getLogger(HomePage.class);
 
-    String mobileNumber = "8147740413";
+    String mobileNumber = "7702425817";
     String password = "111111";
     LoginPage loginPage;
     HomePage homePage;
