@@ -24,8 +24,9 @@ public class WebElementActions extends BrowserActions {
 	/**
 	 * @description this method is used to verify the element is displayed or
 	 * not.
-	 * @param element <code>WebElement</code>
-	 * @return result <code>boolean</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
+	 * @return result     <code>boolean</code>
 	 */
 	public static boolean elementIsDisplayed(WebElement element, String elementName) {
 		boolean result = false;
@@ -40,8 +41,9 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to check the element is displayed.
-	 * @param element <code>WebElement</code>
-	 * @return result <code>boolean</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
+	 * @return result     <code>boolean</code>
 	 */
 	public static boolean checkIfElementIsDisplayed(WebElement element, String elementName) {
 		boolean status = false;
@@ -57,8 +59,9 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to enter the value into the element.
-	 * @param element <code>WebElement</code>
-	 * @param value   <code>String</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
+	 * @param value       <code>String</code>
 	 */
 	public static void enterValue(WebElement element, String elementName, String value) {
 		try {
@@ -71,7 +74,8 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to click on element.
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
 	 */
 	public static void click(WebElement element, String elementName) {
 		try {
@@ -84,7 +88,8 @@ public class WebElementActions extends BrowserActions {
 
 	/**
 	 * @description this method is used to clear field.
-	 * @param element <code>WebElement</code>
+	 * @param element     <code>WebElement</code>
+	 * @param elementName <code>String</code>
 	 */
 	public static void clear(WebElement element, String elementName) {
 		try {
@@ -324,7 +329,7 @@ public class WebElementActions extends BrowserActions {
 		}
 		return attribute;
 	}
-	
+
 	/**
 	 * @discription this method is used to verify element is visible or not
 	 * @param element     <code>WebElement</code>
@@ -332,11 +337,10 @@ public class WebElementActions extends BrowserActions {
 	 */
 	public static void checkElementIsVisible(WebElement element, String elementName) {
 		try {
-		wait.until(ExpectedConditions.visibilityOf(element));
-		logger.info(elementName+" is visibled");
+			wait.until(ExpectedConditions.visibilityOf(element));
+			logger.info(elementName+" is visibled");
 		}catch (Exception exception) {
 			Assert.fail(elementName+" is not fount :: please check below\n"+exception.getMessage());
 		}
 	}
-
 }

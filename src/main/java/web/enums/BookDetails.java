@@ -28,8 +28,7 @@ public enum BookDetails {
     //* variable
     private String bookData ;
 
-    BookDetails(String bookData) {
-        this.bookData = bookData;
-    }
+    BookDetails(String bookData) {this.bookData = bookData;}
+    
     public String getBookDataValue(){return bookData;}
 }
